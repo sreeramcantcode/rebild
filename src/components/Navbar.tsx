@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/rebild-logo.png";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
+  { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#about" },
 ];
 
 const Navbar = () => {
@@ -22,23 +22,23 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/60" : "bg-transparent"
+        scrolled ? "bg-background/85 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
       <nav className="container flex items-center justify-between h-20">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Rebild logo" className="h-9 w-auto" />
-          <span className="font-display text-2xl tracking-tight text-foreground">
+        <Link to="/#top" className="flex items-center gap-2.5">
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary" />
+          <span className="font-display text-2xl tracking-wider text-foreground">
             REBILD<span className="text-primary">.</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-10">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                className="text-[11px] font-semibold uppercase tracking-[0.25em] text-foreground/75 hover:text-primary transition-colors"
               >
                 {l.label}
               </a>
@@ -47,10 +47,11 @@ const Navbar = () => {
         </ul>
 
         <a
-          href="#contact"
-          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full border border-foreground text-foreground text-sm font-semibold uppercase tracking-wide hover:bg-foreground hover:text-background transition-all"
+          href="/#contact"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-foreground/40 text-foreground text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
         >
           Get in touch
+          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
         </a>
 
         <button
@@ -70,16 +71,16 @@ const Navbar = () => {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block py-2 text-base font-medium uppercase tracking-wide"
+                  className="block py-2 font-display text-3xl tracking-wider"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-foreground text-background font-semibold uppercase tracking-wide"
+              className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold uppercase tracking-wide"
             >
               Get in touch
             </a>

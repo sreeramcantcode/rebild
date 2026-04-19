@@ -2,18 +2,19 @@ import { ArrowUpRight, Mail, Phone, Instagram } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 md:py-36 bg-background border-t border-border">
-      <div className="container">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary font-bold">
-          ◉ Contact
+    <section id="contact" className="relative py-24 md:py-36 bg-background border-t border-border overflow-hidden">
+      <div className="pointer-events-none absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
+      <div className="container relative">
+        <span className="text-[11px] uppercase tracking-[0.3em] text-primary font-bold inline-flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Contact
         </span>
-        <h2 className="mt-5 font-display text-6xl md:text-[10rem] lg:text-[13rem] leading-[0.85] text-foreground text-balance">
+        <h2 className="mt-6 font-display text-7xl md:text-[10rem] lg:text-[14rem] leading-[0.85] text-foreground text-balance tracking-wider">
           Let's <span className="text-primary">rebuild</span> <br />
           together.
         </h2>
 
         <div className="mt-16 grid md:grid-cols-12 gap-10 items-end">
-          <p className="md:col-span-5 text-lg text-muted-foreground">
+          <p className="md:col-span-5 text-lg text-foreground/70 leading-relaxed">
             Drop us a line. We reply within 24 hours and start most projects within
             a week.
           </p>
@@ -48,7 +49,7 @@ const Contact = () => {
 
         <a
           href="mailto:hello@rebild.in"
-          className="mt-16 inline-flex items-center gap-3 px-8 py-5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-wider text-sm md:text-base hover:bg-foreground transition-all"
+          className="mt-16 inline-flex items-center gap-3 px-8 py-5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-sm hover:bg-foreground hover:text-background transition-all"
         >
           Start a project
           <ArrowUpRight className="w-5 h-5" />

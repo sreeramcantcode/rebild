@@ -16,7 +16,7 @@ const Marquee = () => {
       <div className="flex gap-12 animate-marquee whitespace-nowrap items-center">
         {row.map((w, i) => (
           <div key={i} className="flex items-center gap-12 shrink-0">
-            <span className="font-display text-5xl md:text-7xl text-foreground">
+            <span className="font-display text-5xl md:text-7xl text-foreground tracking-wider">
               {w}
             </span>
             <span className="w-3 h-3 rounded-full bg-primary shrink-0" />

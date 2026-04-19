@@ -21,15 +21,15 @@ const Work = () => {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-bold">
-              ◉ Selected Work
+            <span className="text-[11px] uppercase tracking-[0.3em] text-primary font-bold inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Selected Work
             </span>
-            <h2 className="mt-5 font-display text-6xl md:text-8xl text-foreground">
+            <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider">
               Brands we've <br />
               <span className="text-primary">rebuilt.</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-sm">
+          <p className="text-foreground/60 max-w-sm">
             A snapshot of recent work across content, performance and design — for
             real brands shipping real results.
           </p>
@@ -40,7 +40,7 @@ const Work = () => {
             <a
               key={i}
               href="#contact"
-              className={`group relative overflow-hidden rounded-2xl bg-muted aspect-[4/5] md:aspect-[5/6] ${it.span}`}
+              className={`group relative overflow-hidden rounded-2xl bg-muted aspect-[4/5] md:aspect-[5/6] ring-1 ring-border ${it.span}`}
             >
               <img
                 src={it.src}
@@ -48,17 +48,17 @@ const Work = () => {
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-90" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-background">
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-95" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-foreground">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary">
                     {it.tag}
                   </p>
-                  <h3 className="mt-2 font-display text-2xl md:text-4xl">
+                  <h3 className="mt-2 font-display text-3xl md:text-5xl tracking-wider">
                     {it.title}
                   </h3>
                 </div>
-                <ArrowUpRight className="w-7 h-7 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <ArrowUpRight className="w-7 h-7 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary" />
               </div>
             </a>
           ))}
