@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,46 +6,37 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 0 0% 8%;
+    /* Rebild palette — pulled from logo: pure white + ink black + signature orange */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 22 100% 54%;
+    /* Logo orange: #FF7A1A → hsl(22, 100%, 55%) */
+    --primary: 22 100% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 40 33% 98%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 94%;
+    --muted: 0 0% 96%;
     --muted-foreground: 0 0% 35%;
 
-    --accent: 22 100% 54%;
+    --accent: 22 100% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 22 100% 54%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 22 100% 55%;
 
-    --radius: 1rem;
-
-    --brand-orange: 22 100% 54%;
-    --brand-orange-soft: 22 100% 96%;
-    --brand-ink: 0 0% 8%;
-    --brand-cream: 40 33% 98%;
-
-    --gradient-orange: linear-gradient(135deg, hsl(22 100% 58%), hsl(14 100% 50%));
-    --shadow-card: 0 30px 60px -20px hsl(0 0% 0% / 0.18);
-    --shadow-soft: 0 10px 30px -10px hsl(22 100% 54% / 0.25);
-
-    --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -59,24 +50,24 @@
 
   .dark {
     --background: 0 0% 6%;
-    --foreground: 40 33% 98%;
+    --foreground: 0 0% 98%;
     --card: 0 0% 8%;
-    --card-foreground: 40 33% 98%;
+    --card-foreground: 0 0% 98%;
     --popover: 0 0% 8%;
-    --popover-foreground: 40 33% 98%;
-    --primary: 22 100% 54%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 22 100% 55%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 14%;
-    --secondary-foreground: 40 33% 98%;
+    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 65%;
-    --accent: 22 100% 54%;
+    --accent: 22 100% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
     --border: 0 0% 16%;
     --input: 0 0% 16%;
-    --ring: 22 100% 54%;
+    --ring: 22 100% 55%;
   }
 }
 
@@ -86,6 +77,7 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
   html {
     scroll-behavior: smooth;
@@ -95,33 +87,22 @@
 @layer utilities {
   .font-display {
     font-family: 'Anton', 'Inter', sans-serif;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
+    letter-spacing: -0.01em;
+    line-height: 0.88;
+    font-weight: 400;
   }
   .text-balance { text-wrap: balance; }
-  .gradient-orange { background: var(--gradient-orange); }
-  .shadow-card { box-shadow: var(--shadow-card); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
 
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
   }
 
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-up {
-    animation: fade-up 0.8s var(--transition-smooth) both;
-  }
-
-  @keyframes word-cycle {
-    0%, 28% { opacity: 1; transform: translateY(0); }
-    33%, 95% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 0; }
+  @keyframes slow-pan {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-3%); }
   }
 }
