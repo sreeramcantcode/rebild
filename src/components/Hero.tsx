@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 import work5 from "@/assets/work-5.jpg";
 import work6 from "@/assets/work-6.jpg";
+import { Link } from "react-router-dom";
 
-const words = ["Creativity", "Strategy", "Content", "Growth"];
+const words = ["Bolder", "Sharper", "Louder", "Faster"];
 
 const cards = [
   { src: work1, rotate: -10 },
@@ -31,23 +31,15 @@ const Hero = () => {
       id="top"
       className="relative pt-36 md:pt-44 pb-0 overflow-hidden bg-background grain"
     >
-      {/* faint orange glow corner */}
       <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
 
       <div className="container">
-        {/* Eyebrow row */}
-        <div className="flex items-center justify-between mb-10 md:mb-14">
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-foreground/60">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Available for projects · 2025
-          </div>
-          <div className="hidden md:block text-[11px] uppercase tracking-[0.3em] text-foreground/50">
-            A Creative Studio · IND
-          </div>
-        </div>
-
         {/* Stacked rotating headline */}
         <div className="relative max-w-6xl">
+          <p className="mb-6 md:mb-10 text-[11px] md:text-xs uppercase tracking-[0.35em] text-foreground/55">
+            Rebild — A creative studio
+          </p>
+
           <div className="relative h-[24vw] min-h-[200px] md:min-h-[260px] lg:min-h-[320px]">
             {words.map((w, i) => (
               <h1
@@ -65,28 +57,31 @@ const Hero = () => {
                 <span className="text-primary">.</span>
               </h1>
             ))}
-            <span className="sr-only">Rebild — Creativity. Strategy. Content. Growth.</span>
+            <span className="sr-only">Rebild — Bolder. Sharper. Louder. Faster.</span>
           </div>
 
           <div className="mt-10 md:mt-14 grid md:grid-cols-12 gap-8 items-end">
             <p className="md:col-span-6 text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-              We lead with content. We scale with digital. Rebild is a creative
-              studio building brands that earn attention — and convert it.
+              Rebild is a creative studio for ambitious brands — built around
+              ideas that move people, products that earn attention and growth
+              that actually compounds.
             </p>
             <div className="md:col-span-6 md:justify-self-end flex items-center gap-4">
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-3 px-6 py-4 rounded-full bg-primary text-primary-foreground text-[12px] font-bold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all"
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center justify-center px-7 py-4 rounded-full bg-primary text-primary-foreground text-[12px] font-bold uppercase tracking-[0.2em] overflow-hidden transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.7)]"
               >
-                Start a project
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href="#work"
+                <span className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]" />
+                <span className="relative group-hover:text-background transition-colors duration-500">
+                  Start a project
+                </span>
+              </Link>
+              <Link
+                to="/work"
                 className="hidden md:inline-flex text-[12px] font-semibold uppercase tracking-[0.2em] text-foreground/70 hover:text-primary transition-colors underline-offset-4 hover:underline"
               >
                 See our work →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

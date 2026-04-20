@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const links = [
-  { label: "Work", href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "About", href: "/#about" },
+  { label: "Work", to: "/work" },
+  { label: "Services", to: "/services" },
+  { label: "About", to: "/about" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [location.pathname]);
 
   return (
     <header
@@ -26,7 +31,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="container flex items-center justify-between h-20">
-        <Link to="/#top" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5">
           <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary" />
           <span className="font-display text-2xl tracking-wider text-foreground">
             REBILD<span className="text-primary">.</span>
@@ -35,24 +40,32 @@ const Navbar = () => {
 
         <ul className="hidden md:flex items-center gap-10">
           {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-[11px] font-semibold uppercase tracking-[0.25em] text-foreground/75 hover:text-primary transition-colors"
+            <li key={l.to}>
+              <NavLink
+                to={l.to}
+                className={({ isActive }) =>
+                  `relative text-[11px] font-semibold uppercase tracking-[0.25em] transition-colors duration-300 py-2 ${
+                    isActive ? "text-primary" : "text-foreground/75 hover:text-primary"
+                  } after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:bg-primary after:transition-all after:duration-300 ${
+                    isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+                  }`
+                }
               >
                 {l.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
 
-        <a
-          href="/#contact"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-foreground/40 text-foreground text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+        <Link
+          to="/contact"
+          className="group relative hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-foreground/40 overflow-hidden transition-colors duration-500 hover:border-primary"
         >
-          Get in touch
-          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-        </a>
+          <span className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]" />
+          <span className="relative text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground group-hover:text-primary-foreground transition-colors duration-500">
+            Get in touch
+          </span>
+        </Link>
 
         <button
           className="md:hidden p-2 text-foreground"
@@ -67,23 +80,21 @@ const Navbar = () => {
         <div className="md:hidden bg-background border-t border-border">
           <ul className="container py-6 flex flex-col gap-4">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
+              <li key={l.to}>
+                <Link
+                  to={l.to}
                   className="block py-2 font-display text-3xl tracking-wider"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
-            <a
-              href="/#contact"
-              onClick={() => setOpen(false)}
+            <Link
+              to="/contact"
               className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold uppercase tracking-wide"
             >
               Get in touch
-            </a>
+            </Link>
           </ul>
         </div>
       )}

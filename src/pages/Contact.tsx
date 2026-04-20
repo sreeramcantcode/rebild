@@ -1,17 +1,17 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
-const Index = () => {
+const ContactPage = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
-      <Marquee />
+      <div className="pt-20">
+        <Contact />
+      </div>
       <Footer />
     </main>
   );
 };
 
-export default Index;
+export default ContactPage;

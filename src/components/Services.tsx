@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -38,15 +39,12 @@ const Services = () => {
     <section id="services" className="py-24 md:py-36 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-12 gap-10 mb-16 md:mb-24">
-          <div className="md:col-span-6">
-            <span className="text-[11px] uppercase tracking-[0.3em] text-primary font-bold inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Expertise
-            </span>
-            <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider">
+          <div className="md:col-span-7">
+            <h2 className="font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider">
               We get the <br /> job <span className="text-primary">done.</span>
             </h2>
           </div>
-          <div className="md:col-span-5 md:col-start-8 flex items-end">
+          <div className="md:col-span-5 flex items-end">
             <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
               A full-stack creative team under one roof. From strategy to shoot,
               from design to distribution — whatever your brand needs to grow,
@@ -55,12 +53,11 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Editorial numbered rows — ADKO style */}
         <div className="border-t border-foreground/30">
           {services.map((s) => (
-            <a
+            <Link
               key={s.num}
-              href="#contact"
+              to="/contact"
               className="group grid grid-cols-12 gap-4 md:gap-8 items-center py-7 md:py-9 border-b border-foreground/15 hover:border-primary transition-colors"
             >
               <span className="col-span-2 md:col-span-1 font-display text-2xl md:text-3xl text-foreground/40 group-hover:text-primary transition-colors tracking-wider">
@@ -85,7 +82,7 @@ const Services = () => {
               <p className="md:hidden col-span-12 text-foreground/60 text-sm -mt-2">
                 {s.desc}
               </p>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
