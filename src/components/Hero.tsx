@@ -1,111 +1,117 @@
 import { useEffect, useState } from "react";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
-import work5 from "@/assets/work-5.jpg";
-import work6 from "@/assets/work-6.jpg";
 import { Link } from "react-router-dom";
+import reelWatch from "@/assets/reel-watch.jpg";
+import reelSneaker from "@/assets/reel-sneaker.jpg";
+import reelCosmetic from "@/assets/reel-cosmetic.jpg";
+import reelDrink from "@/assets/reel-drink.jpg";
+import reelPackaging from "@/assets/reel-packaging.jpg";
+import reelHeadphones from "@/assets/reel-headphones.jpg";
+import reelFashion from "@/assets/reel-fashion.jpg";
+import reelCoffee from "@/assets/reel-coffee.jpg";
 
-const words = ["Bolder", "Sharper", "Louder", "Faster"];
+const words = ["CONTENT", "STORIES", "BRANDS", "GROWTH"];
 
-const cards = [
-  { src: work1, rotate: -10 },
-  { src: work6, rotate: -5 },
-  { src: work3, rotate: -2 },
-  { src: work5, rotate: 2 },
-  { src: work2, rotate: 5 },
-  { src: work4, rotate: 10 },
+const reel = [
+  { src: reelWatch, label: "Timepiece Co." },
+  { src: reelSneaker, label: "Stride Athletics" },
+  { src: reelCosmetic, label: "Hue Beauty" },
+  { src: reelDrink, label: "Volt Beverages" },
+  { src: reelPackaging, label: "Noir Skincare" },
+  { src: reelHeadphones, label: "Sonic Audio" },
+  { src: reelFashion, label: "Ember Apparel" },
+  { src: reelCoffee, label: "Brewline Cafe" },
 ];
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % words.length), 2000);
+    const t = setInterval(() => setIndex((i) => (i + 1) % words.length), 1800);
     return () => clearInterval(t);
   }, []);
+
+  const reelDoubled = [...reel, ...reel];
 
   return (
     <section
       id="top"
-      className="relative pt-36 md:pt-44 pb-0 overflow-hidden bg-background grain"
+      className="relative pt-32 md:pt-40 pb-0 overflow-hidden bg-background grain"
     >
       <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="container">
-        {/* Stacked rotating headline */}
-        <div className="relative max-w-6xl">
-          <p className="mb-6 md:mb-10 text-[11px] md:text-xs uppercase tracking-[0.35em] text-foreground/55">
-            Rebild — A creative studio
-          </p>
+      {/* Centered, ADKO-style oversized rotating word */}
+      <div className="container text-center">
+        <p className="mb-6 text-[11px] md:text-xs uppercase tracking-[0.4em] text-foreground/55">
+          A creative studio for ambitious brands
+        </p>
 
-          <div className="relative h-[24vw] min-h-[200px] md:min-h-[260px] lg:min-h-[320px]">
-            {words.map((w, i) => (
-              <h1
-                key={w}
-                className={`absolute inset-0 font-display text-[20vw] md:text-[16rem] lg:text-[19rem] text-foreground transition-all duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${
-                  i === index
-                    ? "opacity-100 translate-y-0"
-                    : i === (index - 1 + words.length) % words.length
-                    ? "opacity-0 -translate-y-6"
-                    : "opacity-0 translate-y-6"
-                }`}
-                aria-hidden={i !== index}
-              >
-                {w}
-                <span className="text-primary">.</span>
-              </h1>
-            ))}
-            <span className="sr-only">Rebild — Bolder. Sharper. Louder. Faster.</span>
-          </div>
+        <div className="relative mx-auto h-[18vw] min-h-[140px] md:min-h-[200px] lg:min-h-[260px] flex items-center justify-center">
+          {words.map((w, i) => (
+            <h1
+              key={w}
+              className={`absolute font-display text-[18vw] md:text-[14rem] lg:text-[17rem] leading-none text-foreground transition-all duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                i === index
+                  ? "opacity-100 translate-y-0 blur-0"
+                  : "opacity-0 translate-y-8 blur-sm"
+              }`}
+              aria-hidden={i !== index}
+            >
+              {w}
+              <span className="text-primary">.</span>
+            </h1>
+          ))}
+          <span className="sr-only">Rebild — Content. Stories. Brands. Growth.</span>
+        </div>
 
-          <div className="mt-10 md:mt-14 grid md:grid-cols-12 gap-8 items-end">
-            <p className="md:col-span-6 text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-              Rebild is a creative studio for ambitious brands — built around
-              ideas that move people, products that earn attention and growth
-              that actually compounds.
-            </p>
-            <div className="md:col-span-6 md:justify-self-end flex items-center gap-4">
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center justify-center px-7 py-4 rounded-full bg-primary text-primary-foreground text-[12px] font-bold uppercase tracking-[0.2em] overflow-hidden transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.7)]"
-              >
-                <span className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]" />
-                <span className="relative group-hover:text-background transition-colors duration-500">
-                  Start a project
-                </span>
-              </Link>
-              <Link
-                to="/work"
-                className="hidden md:inline-flex text-[12px] font-semibold uppercase tracking-[0.2em] text-foreground/70 hover:text-primary transition-colors underline-offset-4 hover:underline"
-              >
-                See our work →
-              </Link>
-            </div>
-          </div>
+        <p className="mx-auto mt-8 md:mt-10 max-w-2xl text-base md:text-lg text-foreground/70 leading-relaxed">
+          We build brands that move — through content that stops the scroll,
+          design that earns attention, and campaigns that compound.
+        </p>
+
+        <div className="mt-10 flex items-center justify-center gap-6">
+          <Link
+            to="/contact"
+            className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-primary-foreground text-[12px] font-bold uppercase tracking-[0.2em] overflow-hidden transition-transform duration-500 ease-out hover:-translate-y-0.5"
+          >
+            <span className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]" />
+            <span className="relative group-hover:text-background transition-colors duration-500">
+              Start a project
+            </span>
+          </Link>
+          <Link
+            to="/work"
+            className="hidden md:inline-flex text-[12px] font-semibold uppercase tracking-[0.2em] text-foreground/70 hover:text-primary transition-colors"
+          >
+            See our work
+          </Link>
         </div>
       </div>
 
-      {/* Tilted scattered card row */}
-      <div className="relative mt-20 md:mt-28 h-[300px] sm:h-[380px] md:h-[480px]">
-        <div className="absolute inset-x-0 bottom-[-40px] flex items-end justify-center gap-3 md:gap-6 px-4">
-          {cards.map((c, i) => (
+      {/* Continuous moving reel of brand mockups */}
+      <div className="relative mt-20 md:mt-28">
+        <div className="flex gap-5 md:gap-7 w-max animate-marquee will-change-transform">
+          {reelDoubled.map((c, i) => (
             <div
               key={i}
-              className="relative shrink-0 w-[16vw] min-w-[110px] max-w-[210px] aspect-[3/4] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 transition-all duration-500 hover:!rotate-0 hover:!translate-y-[-30px] hover:z-10"
-              style={{
-                transform: `rotate(${c.rotate}deg) translateY(${Math.abs(c.rotate) * 2}px)`,
-                boxShadow: "0 30px 60px -20px hsl(0 0% 0% / 0.6)",
-              }}
+              className="relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[26vw] lg:w-[22vw] max-w-[360px] aspect-[3/4] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group"
             >
               <img
                 src={c.src}
-                alt="Rebild work"
-                className="w-full h-full object-cover"
-                loading={i < 3 ? "eager" : "lazy"}
+                alt={c.label}
+                width={768}
+                height={1024}
+                loading={i < 4 ? "eager" : "lazy"}
+                className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+              <div className="absolute bottom-4 left-5 right-5">
+                <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary">
+                  Brand mockup
+                </p>
+                <p className="mt-1 font-display text-2xl md:text-3xl text-foreground tracking-wider">
+                  {c.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>
