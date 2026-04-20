@@ -11,10 +11,7 @@ const About = () => {
       <div className="container">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-7">
-            <span className="text-[11px] uppercase tracking-[0.3em] text-primary font-bold inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" /> About
-            </span>
-            <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider">
+            <h2 className="font-display text-6xl md:text-8xl lg:text-9xl text-foreground tracking-wider">
               Built to <br /><span className="text-primary">rebuild.</span>
             </h2>
             <div className="mt-10 space-y-5 text-lg text-foreground/70 max-w-xl leading-relaxed">
