@@ -12,14 +12,14 @@ import reelCoffee from "@/assets/reel-coffee.jpg";
 const words = ["CONTENT", "STORIES", "BRANDS", "GROWTH"];
 
 const reel = [
-  { src: reelWatch, label: "Timepiece Co." },
-  { src: reelSneaker, label: "Stride Athletics" },
-  { src: reelCosmetic, label: "Hue Beauty" },
-  { src: reelDrink, label: "Volt Beverages" },
-  { src: reelPackaging, label: "Noir Skincare" },
-  { src: reelHeadphones, label: "Sonic Audio" },
-  { src: reelFashion, label: "Ember Apparel" },
-  { src: reelCoffee, label: "Brewline Cafe" },
+  { src: reelWatch, label: "Timepiece Co.", h: "tall" },
+  { src: reelSneaker, label: "Stride Athletics", h: "short" },
+  { src: reelCosmetic, label: "Hue Beauty", h: "tall" },
+  { src: reelDrink, label: "Volt Beverages", h: "short" },
+  { src: reelPackaging, label: "Noir Skincare", h: "tall" },
+  { src: reelHeadphones, label: "Sonic Audio", h: "short" },
+  { src: reelFashion, label: "Ember Apparel", h: "tall" },
+  { src: reelCoffee, label: "Brewline Cafe", h: "short" },
 ];
 
 const Hero = () => {
@@ -35,12 +35,11 @@ const Hero = () => {
   return (
     <section
       id="top"
-      className="relative pt-32 md:pt-40 pb-0 overflow-hidden bg-background grain"
+      className="relative pt-32 md:pt-40 pb-20 overflow-hidden bg-background grain"
     >
       <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
 
-      {/* Centered, ADKO-style oversized rotating word */}
-      <div className="container text-center">
+      <div className="container text-center relative z-10">
         <p className="mb-6 text-[11px] md:text-xs uppercase tracking-[0.4em] text-foreground/55">
           A creative studio for ambitious brands
         </p>
@@ -87,13 +86,21 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Continuous moving reel of brand mockups */}
-      <div className="relative mt-20 md:mt-28">
-        <div className="flex gap-5 md:gap-7 w-max animate-marquee will-change-transform">
+      {/* Tilted, staggered marquee — drifts diagonally for an editorial feel */}
+      <div
+        className="relative mt-24 md:mt-32 -mx-[10%] w-[120%] overflow-hidden"
+        style={{ transform: "rotate(-4deg)" }}
+      >
+        <div className="absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+
+        <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee will-change-transform py-10">
           {reelDoubled.map((c, i) => (
             <div
               key={i}
-              className="relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[26vw] lg:w-[22vw] max-w-[360px] aspect-[3/4] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group"
+              className={`relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[24vw] lg:w-[20vw] max-w-[340px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
+                c.h === "tall" ? "aspect-[3/4] translate-y-0" : "aspect-[4/5] -translate-y-6 md:-translate-y-10"
+              }`}
             >
               <img
                 src={c.src}
