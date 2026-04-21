@@ -86,41 +86,67 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Tilted, staggered marquee — drifts diagonally for an editorial feel */}
-      <div
-        className="relative mt-24 md:mt-32 -mx-[10%] w-[120%] overflow-hidden"
-        style={{ transform: "rotate(-4deg)" }}
-      >
+      {/* Two tilted, staggered marquees — drift in opposite directions for an editorial feel */}
+      <div className="relative mt-24 md:mt-32 space-y-6 md:space-y-10">
         <div className="absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
-        <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee will-change-transform py-10">
-          {reelDoubled.map((c, i) => (
-            <div
-              key={i}
-              className={`relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[24vw] lg:w-[20vw] max-w-[340px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
-                c.h === "tall" ? "aspect-[3/4] translate-y-0" : "aspect-[4/5] -translate-y-6 md:-translate-y-10"
-              }`}
-            >
-              <img
-                src={c.src}
-                alt={c.label}
-                width={768}
-                height={1024}
-                loading={i < 4 ? "eager" : "lazy"}
-                className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-              <div className="absolute bottom-4 left-5 right-5">
-                <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary">
-                  Brand mockup
-                </p>
-                <p className="mt-1 font-display text-2xl md:text-3xl text-foreground tracking-wider">
-                  {c.label}
-                </p>
+        <div
+          className="-mx-[10%] w-[120%] overflow-hidden"
+          style={{ transform: "rotate(-4deg)" }}
+        >
+          <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee will-change-transform py-6 hover:[animation-play-state:paused]">
+            {reelDoubled.map((c, i) => (
+              <div
+                key={`a-${i}`}
+                className={`relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[24vw] lg:w-[20vw] max-w-[340px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
+                  c.h === "tall" ? "aspect-[3/4]" : "aspect-[4/5] -translate-y-4 md:-translate-y-8"
+                }`}
+              >
+                <img
+                  src={c.src}
+                  alt={c.label}
+                  width={768}
+                  height={1024}
+                  loading={i < 4 ? "eager" : "lazy"}
+                  className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary">
+                    Brand mockup
+                  </p>
+                  <p className="mt-1 font-display text-2xl md:text-3xl text-foreground tracking-wider">
+                    {c.label}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        <div
+          className="-mx-[10%] w-[120%] overflow-hidden"
+          style={{ transform: "rotate(-4deg)" }}
+        >
+          <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee-reverse will-change-transform py-6 hover:[animation-play-state:paused]">
+            {[...reel.slice().reverse(), ...reel.slice().reverse()].map((c, i) => (
+              <div
+                key={`b-${i}`}
+                className={`relative shrink-0 w-[50vw] sm:w-[34vw] md:w-[20vw] lg:w-[16vw] max-w-[280px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
+                  c.h === "tall" ? "aspect-[4/5] translate-y-3 md:translate-y-6" : "aspect-[3/4]"
+                }`}
+              >
+                <img
+                  src={c.src}
+                  alt={c.label}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
