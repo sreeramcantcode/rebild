@@ -5,27 +5,26 @@ import footerFigure from "@/assets/footer-figure-v2.jpg";
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-gradient-to-b from-muted/80 via-card to-background" />
-      <div className="pointer-events-none absolute -top-32 right-[-8rem] h-[34rem] w-[34rem] rounded-full bg-primary/12 blur-3xl" />
-      <div className="pointer-events-none absolute top-40 left-[-8rem] h-[18rem] w-[18rem] rounded-full bg-primary/8 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-gradient-to-b from-card via-card to-background" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[16rem] bg-gradient-to-b from-background via-background/85 to-transparent" />
+      <div className="pointer-events-none absolute -top-24 right-[-8rem] h-[32rem] w-[32rem] rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-48 left-[-8rem] h-[18rem] w-[18rem] rounded-full bg-primary/6 blur-3xl" />
 
-      <div className="container relative pt-24 md:pt-28 lg:pt-32">
-        <div className="grid items-end gap-12 md:grid-cols-12 lg:gap-16">
-          <div className="md:col-span-6 lg:col-span-7">
+      <div className="container relative pt-20 sm:pt-24 lg:pt-28">
+        <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
             <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-foreground/45">
               Get in touch
             </p>
-            <h2 className="mt-5 max-w-4xl font-display text-[3.75rem] leading-[0.88] tracking-wider text-foreground sm:text-[4.75rem] md:text-[6.25rem] lg:text-[7.5rem]">
-              Ready to bring
-              <br />
-              your vision <span className="text-primary">to life?</span>
+            <h2 className="mt-5 max-w-5xl font-display text-[3.6rem] leading-[0.88] tracking-wider text-foreground sm:text-[4.75rem] md:text-[5.5rem] lg:text-[7.1rem]">
+              Ready to bring your vision <span className="text-primary">to life?</span>
               <br />
               Contact Rebild today!
             </h2>
 
             <a
               href="mailto:rebild@gmail.com"
-              className="group mt-12 inline-flex w-full max-w-[30rem] items-center justify-between gap-6 border-b border-foreground/20 pb-4 transition-colors hover:border-primary"
+              className="group mt-10 inline-flex w-full max-w-[32rem] items-center justify-between gap-6 border-b border-foreground/20 pb-4 transition-colors hover:border-primary"
             >
               <span className="text-sm uppercase tracking-[0.28em] text-foreground/80 transition-colors group-hover:text-primary">
                 Get in touch
@@ -33,26 +32,27 @@ const Footer = () => {
               <ArrowUpRight className="h-5 w-5 text-foreground/60 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
             </a>
 
-            <p className="mt-8 max-w-lg text-base leading-relaxed text-foreground/60 md:text-lg">
-              We’d love to hear from you. Whether you have a question,
-              feedback, or a project idea — our team responds within 24 hours.
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-foreground/60 md:text-lg">
+              We’d love to hear from you. Whether you have a question, feedback,
+              or a project idea — our team responds within 24 hours.
             </p>
           </div>
 
-          <div className="relative md:col-span-6 lg:col-span-5">
-            <div className="pointer-events-none absolute inset-x-6 bottom-0 h-24 bg-gradient-to-t from-background via-background/70 to-transparent" />
+          <div className="relative lg:col-span-5">
+            <div className="pointer-events-none absolute inset-x-8 bottom-0 h-28 bg-gradient-to-t from-background via-background/80 to-transparent" />
+            <div className="pointer-events-none absolute right-10 bottom-10 h-40 w-40 rounded-full bg-primary/16 blur-3xl" />
             <img
               src={footerFigure}
               alt="Creative collaborator seated on sculptural orange blocks"
               width={960}
               height={1200}
               loading="lazy"
-              className="relative ml-auto w-full max-w-[26rem] object-contain md:max-w-[30rem] lg:max-w-[34rem]"
+              className="relative ml-auto w-full max-w-[23rem] object-contain opacity-95 [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_88%,transparent_100%)] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem]"
             />
           </div>
         </div>
 
-        <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent md:mt-2" />
+        <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent lg:mt-4" />
 
         <div className="grid gap-10 py-14 md:grid-cols-12 md:gap-8 md:py-16">
           <div className="md:col-span-5">
