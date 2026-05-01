@@ -69,28 +69,7 @@ const Expertise = () => {
           className="relative border-t border-border"
         >
           {/* Floating preview that follows the cursor */}
-          <div
-            className={`pointer-events-none absolute z-20 hidden md:block w-[22vw] max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-primary/30 shadow-[0_30px_80px_-20px_hsl(var(--primary)/0.5)] transition-[opacity,transform] duration-500 ease-out ${
-              hovered ? "opacity-100 scale-100" : "opacity-0 scale-95"
-            }`}
-            style={{
-              transform: `translate(${pos.x - 170}px, ${pos.y - 200}px) ${
-                hovered ? "scale(1)" : "scale(0.95)"
-              }`,
-            }}
-          >
-            {items.map((it) => (
-              <img
-                key={it.num}
-                src={it.img}
-                alt=""
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  hovered === it.num ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-          </div>
+         
 
           {items.map((it) => (
             <Link

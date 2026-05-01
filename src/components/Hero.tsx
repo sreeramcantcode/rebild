@@ -39,12 +39,12 @@ const Hero = () => {
     >
       <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="container text-center relative z-10">
-        <p className="mb-6 text-[11px] md:text-xs uppercase tracking-[0.4em] text-foreground/55">
+      <div className="container  relative z-10">
+        <p className=" mb-6 ml-6 text-[11px] md:text-xs uppercase tracking-[0.4em] text-foreground/55">
           A creative studio for ambitious brands
         </p>
 
-        <div className="relative mx-auto h-[18vw] min-h-[140px] md:min-h-[200px] lg:min-h-[260px] flex items-center justify-center">
+        <div className="relative mx-auto h-[18vw] min-h-[140px] md:min-h-[200px] lg:min-h-[260px] flex items-center ">
           {words.map((w, i) => (
             <h1
               key={w}
@@ -59,15 +59,13 @@ const Hero = () => {
               <span className="text-primary">.</span>
             </h1>
           ))}
-          <span className="sr-only">Rebild — Content. Stories. Brands. Growth.</span>
+          
         </div>
+        
+        
+      
 
-        <p className="mx-auto mt-8 md:mt-10 max-w-2xl text-base md:text-lg text-foreground/70 leading-relaxed">
-          We build brands that move — through content that stops the scroll,
-          design that earns attention, and campaigns that compound.
-        </p>
-
-        <div className="mt-10 flex items-center justify-center gap-6">
+        <div className="mt-10 flex items-center gap-6">
           <Link
             to="/contact"
             className="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-primary-foreground text-[12px] font-bold uppercase tracking-[0.2em] overflow-hidden transition-transform duration-500 ease-out hover:-translate-y-0.5"
@@ -87,21 +85,18 @@ const Hero = () => {
       </div>
 
       {/* Two tilted, staggered marquees — drift in opposite directions for an editorial feel */}
-      <div className="relative mt-24 md:mt-32 space-y-6 md:space-y-10">
+      <div className="relative  space-y-6 ">
         <div className="absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
         <div
-          className="-mx-[10%] w-[120%] overflow-hidden"
-          style={{ transform: "rotate(-4deg)" }}
+          className="-mx-[10%] w-[120%] overflow-hidden transform md:rotate-[-40deg]"
         >
-          <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee will-change-transform py-6 hover:[animation-play-state:paused]">
+          <div className="flex items-center gap-2 md:gap-7 w-max animate-marquee will-change-transform py-6 ">
             {reelDoubled.map((c, i) => (
               <div
                 key={`a-${i}`}
-                className={`relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[24vw] lg:w-[20vw] max-w-[340px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
-                  c.h === "tall" ? "aspect-[3/4]" : "aspect-[4/5] -translate-y-4 md:-translate-y-8"
-                }`}
+                className="relative shrink-0 w-[58vw] sm:w-[40vw] md:w-[24vw] lg:w-[20vw] max-w-[340px] aspect-[3/4] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group"
               >
                 <img
                   src={c.src}
@@ -125,29 +120,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div
-          className="-mx-[10%] w-[120%] overflow-hidden"
-          style={{ transform: "rotate(-4deg)" }}
-        >
-          <div className="flex items-center gap-5 md:gap-7 w-max animate-marquee-reverse will-change-transform py-6 hover:[animation-play-state:paused]">
-            {[...reel.slice().reverse(), ...reel.slice().reverse()].map((c, i) => (
-              <div
-                key={`b-${i}`}
-                className={`relative shrink-0 w-[50vw] sm:w-[34vw] md:w-[20vw] lg:w-[16vw] max-w-[280px] rounded-2xl overflow-hidden bg-muted ring-1 ring-border/60 group ${
-                  c.h === "tall" ? "aspect-[4/5] translate-y-3 md:translate-y-6" : "aspect-[3/4]"
-                }`}
-              >
-                <img
-                  src={c.src}
-                  alt={c.label}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
     </section>
   );
