@@ -11,7 +11,6 @@ import ServicesPage from "./pages/Services.tsx";
 import WorkPage from "./pages/Work.tsx";
 import AboutPage from "./pages/About.tsx";
 import ContactPage from "./pages/Contact.tsx";
-import ClientOnboarding from "./pages/Clientform.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/clientform" element={<ClientOnboarding></ClientOnboarding>} />
+
           <Route path="/" element={<Index />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/services" element={<ServicesPage />} />
