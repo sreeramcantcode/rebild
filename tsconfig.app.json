@@ -31,5 +31,5 @@
   },
   "include": [
     "src"
-  ]
+, "ClientOnboarding.jsx"  ]
 }
