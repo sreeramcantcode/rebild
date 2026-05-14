@@ -99,6 +99,7 @@ const initialData = {
   previous_ads_experience: "",
   has_creative_assets: "",
   additional_notes: "",
+  
   primary_goals_other: "",
 };
 
@@ -778,6 +779,11 @@ export default function ClientOnboarding() {
       competitors: data.competitors,
       success_metrics: data.success_metrics,
       creative_requirements: data.creative_requirements,
+      has_facebook_page: data.has_facebook_page,
+  has_instagram: data.has_instagram,
+  has_meta_business: data.has_meta_business,
+  has_creative_assets: data.has_creative_assets,
+  previous_ads_experience: data.previous_ads_experience,
       notes: data.additional_notes,
     };
 
