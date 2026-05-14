@@ -812,10 +812,7 @@ export default function ClientOnboarding() {
       <Toast message={toast} />
 
       {/* ── APP SHELL ── */}
-      <div
-        className="grid max-w-[1280px] min-h-screen mx-auto"
-        style={{ gridTemplateColumns: "minmax(320px, 34%) 1fr" }}
-      >
+      <div className="grid max-w-[1280px] min-h-screen mx-auto [grid-template-columns:minmax(320px,34%)_1fr] max-[980px]:grid-template-columns-none max-[980px]:block">
         {/* ── SIDEBAR ── */}
         <aside className="sticky top-0 flex flex-col justify-between h-screen border-r border-[#262626] px-12 py-16 max-[980px]:static max-[980px]:h-auto max-[980px]:border-r-0 max-[980px]:border-b max-[980px]:px-6 max-[980px]:py-8">
           <div>
