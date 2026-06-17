@@ -588,13 +588,16 @@ export default function ClientOnboarding() {
 
    try {
 
-  await fetch(N8N_WEBHOOK_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(N8N_WEBHOOK_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+});
+
+console.log("Webhook Status:", response.status);
+console.log("Webhook Response:", await response.text());
 
   await emailjs.send(
     EMAILJS_SERVICE_ID,
