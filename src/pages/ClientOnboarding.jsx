@@ -586,15 +586,29 @@ export default function ClientOnboarding() {
       notes: data.additional_notes,
     };
 
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      setView("flash");
-      setTimeout(() => setView("thankyou"), 2000);
-    } catch (err) {
-      console.error(err);
-      showToast("Failed to send. Try again.");
-    }
-  }
+   try {
+
+  await fetch(N8N_WEBHOOK_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  await emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    templateParams
+  );
+
+  setView("flash");
+  setTimeout(() => setView("thankyou"), 2000);
+
+} catch (err) {
+  console.error(err);
+  showToast("Failed to send. Try again.");
+}
 
   function resetForm() {
     setStep(0);
