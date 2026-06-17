@@ -17,7 +17,7 @@ const EMAILJS_SERVICE_ID = "service_z7dnxnm";
 const EMAILJS_TEMPLATE_ID = "template_kt0nozk";
 const EMAILJS_PUBLIC_KEY = "uUZDgbrNUGkpKoC8D";
 
-const N8N_WEBHOOK_URL = "https://rebulid.app.n8n.cloud/webhook-test/client-brief
+const N8N_WEBHOOK_URL = "https://rebulid.app.n8n.cloud/webhook/client-brief
 ";
 
 const SERVICES = [
