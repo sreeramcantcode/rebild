@@ -587,13 +587,33 @@ export default function ClientOnboarding() {
 
    try {
 
-  const response = await fetch(N8N_WEBHOOK_URL, {
+  const n8nPayload = {
+  name: data.contact_name,
+  company: data.company_name,
+  email: data.email,
+  phone: data.phone,
+  industry: data.industry,
+  website: data.website,
+  services: data.services.join(", "),
+  goals: data.primary_goals.join(", "),
+  budget: data.monthly_budget,
+  brand_description: data.brand_description,
+  target_audience: data.target_audience,
+  target_locations: data.target_locations,
+  additional_notes: data.additional_notes,
+};
+
+const response = await fetch(N8N_WEBHOOK_URL, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
   },
-  body: JSON.stringify(data),
+  body: JSON.stringify(n8nPayload),
 });
+
+if (!response.ok) {
+  throw new Error(`Webhook failed: ${response.status}`);
+}
 
 console.log("Webhook Status:", response.status);
 console.log("Webhook Response:", await response.text());
