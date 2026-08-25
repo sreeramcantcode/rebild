@@ -1,3 +1,1 @@
-# Welcome to your Lovable project
-
-TODO: Document your project here
+An Interactive Frontend Landing page for a concept digital Marketing Agency - Rebild
